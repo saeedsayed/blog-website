@@ -52,7 +52,7 @@ const Navbar = async () => {
                 />
               )}
               <li>
-                <LogoutButton>Log out {session.user.name}</LogoutButton>
+                <LogoutButton>Log out {session?.user?.name}</LogoutButton>
               </li>
             </>
           ) : (
@@ -65,7 +65,12 @@ const Navbar = async () => {
         </ul>
       </div>
       {/* Small device nav */}
-      <SmallDeviceNav LINKS={LINKS} />
+      <SmallDeviceNav
+        LINKS={LINKS}
+        session={session}
+        isLogedIn={isLogedIn}
+        isAdmin={isAdmin}
+      />
     </nav>
   );
 };

@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import NavLink from "./NavLink";
 import Button from "../buttons/Button";
+import LogoutButton from "../buttons/LogoutButton";
 
-const SmallDeviceNav = ({ LINKS }) => {
+const SmallDeviceNav = ({ LINKS, session, isLogedIn, isAdmin }) => {
   const [open, setOpen] = useState(false);
   const closeNavHandler = () => setOpen(false);
   const openNavHandler = () => setOpen(true);
@@ -38,9 +39,7 @@ const SmallDeviceNav = ({ LINKS }) => {
                   />
                 )}
                 <li>
-                  <Button variant={"danger"} onClick={closeNavHandler}>
-                    Log out
-                  </Button>
+                  <LogoutButton>Log out</LogoutButton>
                 </li>
               </>
             ) : (

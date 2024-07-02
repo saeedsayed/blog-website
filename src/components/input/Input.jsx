@@ -22,7 +22,7 @@ const Input = ({ textarea, label, id, type, ...props }) => {
           <input
             className="border w-full text-lg border-none focus:outline-none bg-midnight px-4 py-2 rounded"
             id={id}
-            type={type === "password" && !isShowPassword ? "password" : "text"}
+            type={type === "password" && isShowPassword ? "text" : type}
             {...props}
           />
           {type === "password" && (
