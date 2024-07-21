@@ -23,6 +23,7 @@ const Input = ({ textarea, label, id, type, ...props }) => {
             className="border w-full text-lg border-none focus:outline-none bg-midnight px-4 py-2 rounded"
             id={id}
             type={type === "password" && isShowPassword ? "text" : type}
+            autoComplete={type === "password" && "off"}
             {...props}
           />
           {type === "password" && (

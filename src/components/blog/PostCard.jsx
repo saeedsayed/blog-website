@@ -1,10 +1,14 @@
 import { deletePost } from "@/lib/action";
+import { auth } from "@/lib/nextAuth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MdDeleteOutline } from "react-icons/md";
 
 const PostCard = async ({ post }) => {
+  const {
+    user: { isAdmin },
+  } = await auth();
   return (
     <div className="w-[calc((100%-32px)/3)] lg:w-[calc((100%-48px)/4)] min-w-56">
       <div className="flex items-center">
@@ -20,20 +24,22 @@ const PostCard = async ({ post }) => {
           <div className="rotate-[270deg] my-auto whitespace-nowrap text-xl">
             {post.createdAt.toString().slice(0, 10)}
           </div>
-          <form
-            className="w-full"
-            action={async (_) => {
-              "use server";
-              await deletePost(post._id);
-            }}
-          >
-            <button
-              className="w-full bg-red-800 flex justify-center text-3xl py-5"
-              title="delete this post"
+          {isAdmin && (
+            <form
+              className="w-full"
+              action={async (_) => {
+                "use server";
+                await deletePost(post._id);
+              }}
             >
-              <MdDeleteOutline />
-            </button>
-          </form>
+              <button
+                className="w-full bg-red-800 flex justify-center text-3xl py-5"
+                title={`delete ${post.title} post`}
+              >
+                <MdDeleteOutline />
+              </button>
+            </form>
+          )}
         </div>
       </div>
       <div className="flex flex-col gap-3 ps-3">

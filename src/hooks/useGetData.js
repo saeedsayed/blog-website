@@ -19,9 +19,11 @@ export const useGetPost = async (slug) => {
     return res.json();
 }
 export const useGetUsers = async () => {
-    connectToDb()
-    const data = await users.find()
-    return data;
+    const res = await fetch(`http://localhost:3000/api/users`, {
+        method: "GET",
+        cache: "no-store",
+    })
+    return res.json();
 }
 export const useGetUser = async (id) => {
     connectToDb()

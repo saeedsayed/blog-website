@@ -28,8 +28,9 @@ const LINKS = [
 
 const Navbar = async () => {
   const session = await auth();
+  console.log('session: ', session);
   const isLogedIn = !!session;
-  const isAdmin = true;
+  const isAdmin = session?.user?.isAdmin;
 
   return (
     <nav className="py-4 flex justify-between items-center">
@@ -52,7 +53,7 @@ const Navbar = async () => {
                 />
               )}
               <li>
-                <LogoutButton>Log out {session?.user?.name}</LogoutButton>
+                <LogoutButton>Log out</LogoutButton>
               </li>
             </>
           ) : (

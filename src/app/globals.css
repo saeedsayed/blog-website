@@ -18,6 +18,15 @@
   text-decoration: none;
 }
 
+::-webkit-scrollbar{
+  width: 8px;
+  background: var(--bgSoft);
+}
+
+::-webkit-scrollbar-thumb{
+  background: var(--textSoft);
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
