@@ -69,7 +69,7 @@ const LoginForm = () => {
           </LoginButton>
         </div>
         <p>
-          Don't have an account?{" "}
+          Don{"'"}t have an account?{" "}
           <Link href="/register" className="text-btn underline">
             Register
           </Link>

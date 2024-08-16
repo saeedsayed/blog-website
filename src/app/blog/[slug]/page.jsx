@@ -3,7 +3,7 @@ import React from "react";
 import { useGetPost, useGetUser } from "@/hooks/useGetData";
 
 
-export async function generateMetadata({ params }) {
+export async function GenerateMetadata({ params }) {
   const post = await useGetPost(params.slug);
   return {
     title: post.title,
